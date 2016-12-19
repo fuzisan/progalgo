@@ -17,7 +17,24 @@
   <div class="col-xs-6">
       <pre id="editor0" style="height: 600px"><%=@ans0%></pre>
   </div>
-  <div class="col-xs-6"></div>
+  <div class="col-xs-6">
+    <div class="tab">
+      <ul id="tab_head">
+        <li class="on">動画</li>
+        <li>解説</li>
+      </ul>
+      <ul id="tab_body">
+        <li class="on">
+          <h2>動画</h2>
+          <p>hogehoge</p>
+        </li>
+        <li>
+          <h2>解説</h2>
+          <p>hogehoge</p>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 <div class="row">
   <div class="col-xs-6">
@@ -52,4 +69,22 @@
   editor1.getSession().setMode("ace/mode/ruby");
   editor2.setTheme("ace/theme/monokai");
   editor2.getSession().setMode("ace/mode/ruby");
+</script>
+
+<script>
+(function($){
+
+$(document).ready(function(){
+  var tablist = $("#tab_head li");
+  var tabbody = $("#tab_body li");
+
+  tablist.click(function(){
+    var idx = tablist.index($(this));
+    tablist.removeClass("on").eq(idx).addClass("on");
+    tabbody.removeClass("on").eq(idx).addClass("on");
+  });
+
+});
+})(jQuery);
+
 </script>
