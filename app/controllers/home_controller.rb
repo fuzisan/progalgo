@@ -26,42 +26,33 @@ def task1ans
   puts ans
 EOD
 
-  @ans1 = <<EOD
-  len = [2,3,4,5,10]
-  circumference = 0
-  #降順にソート
-  element = len.sort {|a, b| b.to_i <=> a.to_i }
-  #3本ずつ使う
-  for i in 0..element.length-2 do
-  if element[i].to_i < element[i+1].to_i + element[i+2].to_i
-  circumference = element[i] + element[i+1] + element[i+2]
-  break  #長いものから順にやってるためcircumferenceが更新された段階で抜ける
-  end
-  end
-
-  puts circumference
-
-EOD
-
-  @ans2 = <<EOD
-  len=[2,3,4,5,10]
-  ans = 0
-  #降順にソート
-  element = len.sort {|a, b| b.to_i <=> a.to_i }
-  #3本ずつ使う
-  for i in 0..element.length-3 do
-  circumference = element[i] + element[i+1] + element[i+2]
-  #辺をすべて足した長さが最長の辺の長さの２倍を超えている
-  if circumference > element[i] * 2
-      ans = circumference
-      break
-  end
-  end
-EOD
 @Commentary0= <<EOD
   全ての選び方を試して最も長いものを出力する.
 EOD
-  @Commentary1= <<EOD
+
+
+
+end
+
+def task1ans2
+
+@ans1 = <<EOD
+    len = [2,3,4,5,10]
+    circumference = 0
+    #降順にソート
+    element = len.sort {|a, b| b.to_i <=> a.to_i }
+    #3本ずつ使う
+    for i in 0..element.length-2 do
+    if element[i].to_i < element[i+1].to_i + element[i+2].to_i
+    circumference = element[i] + element[i+1] + element[i+2]
+    break  #長いものから順にやってるためcircumferenceが更新された段階で抜ける
+    end
+    end
+
+    puts circumference
+
+EOD
+@Commentary1= <<EOD
   周長が最も長い三角形は，なるべく長い棒たちを使った三角形である．
   なので，配列を降順にソートし長い棒から順に3本使っていく．
   一番長い棒a[1],次に長い棒a[2],その次に長い棒a[3]とする．
@@ -69,7 +60,28 @@ EOD
   残りの棒を使ってもこれより短いので,次の場合を試す.
   a[2]を一番長い棒として同様に進めていく．
 EOD
-  @Commentary2= <<EOD
+
+end
+
+def task1ans3
+      @ans2 = <<EOD
+      len=[2,3,4,5,10]
+      ans = 0
+      #降順にソート
+      element = len.sort {|a, b| b.to_i <=> a.to_i }
+      #3本ずつ使う
+      for i in 0..element.length-3 do
+      circumference = element[i] + element[i+1] + element[i+2]
+      #辺をすべて足した長さが最長の辺の長さの２倍を超えている
+      if circumference > element[i] * 2
+          ans = circumference
+          break
+      end
+      end
+EOD
+
+
+@Commentary2= <<EOD
   三角形の成立条件の見方を変える.
   三角形が成立するとき,
   一番長い棒a[1],次に長い棒a[2],その次に長い棒a[3]，三角形の周長をCとする．
@@ -89,6 +101,8 @@ EOD
   これをコードに起こす
 EOD
 end
+
+
 
 
 end

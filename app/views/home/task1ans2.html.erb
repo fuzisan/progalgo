@@ -1,0 +1,177 @@
+<script
+src="https://code.jquery.com/jquery-1.12.4.js"
+integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+crossorigin="anonymous"></script>
+<script
+src="https://code.jquery.com/color/jquery.color-2.1.2.js"
+integrity="sha256-1Cn7TdfHiMcEbTuku97ZRSGt2b3SvZftEIn68UMgHC8="
+crossorigin="anonymous"></script>
+<style type="text/css">
+
+.arr{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.arr_elm{
+  list-style-type: none;
+  margin: 10px;
+  background: #ddd;
+  width:50px;
+  height: 50px;
+  text-align: center;
+}
+.wrapper{
+  width: 1200px;
+  display: flex;
+  position: relative;
+}
+.selected{
+  background-color: #87CEEB;
+}
+#circumference{
+  width:130px;
+}
+#ten{
+  height: 500px;
+}
+#five{
+  height:250px;
+}
+#four{height: 200px;}
+#three{height: 150px;}
+#two{height:100px;}
+.code{
+  float: right;
+  font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
+  font-size: 14px;
+  line-height: 1.2;
+  background-color: #778899;
+  color: #fff;
+  padding: 0 20px 20px;
+  margin: 0 30px 0;
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+}
+</style>
+<h3>考え方2</h3>
+<div class="row">
+  <div class="col-xs-6">
+    <pre id="editor" style="height: 600px"><%=@ans1%></pre>
+  </div>
+  <div class="col-xs-6">
+    <div class="tab">
+      <ul id="tab_head">
+        <li class="on">動画</li>
+        <li>解説</li>
+      </ul>
+      <ul id="tab_body">
+        <li class="on">
+          <div class = "wrapper">
+            <ul class="arr">
+              <li class="arr_elm" id = "ten" >10</li>
+              <li class="arr_elm" id = "five">5</li>
+              <li class="arr_elm" id = "four">4</li>
+              <li class="arr_elm" id = "three">3</li>
+              <li class="arr_elm" id = "two">2</li>
+              <li class="arr_elm" id = "circumference">0 circumference</li>
+            </ul>
+            <div class="code" style="height: 300px">
+              <p id="line_1">len = [2,3,4,5,10]</p>
+              <p id="line_2">circumference = 0</p>
+              <p id="line_3">element = len.sort {|a, b| b.to_i <=> a.to_i }</p>
+              <p id="line_4">for i in 0..element.length-2 do</p>
+              <p id="line_5"> &nbsp;&nbsp;&nbsp;&nbsp; if element[i].to_i < element[i+1].to_i + element[i+2].to_i</p>
+              <p id="line_6"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  circumference = element[i] + element[i+1] + element[i+2]</p>
+              <p id="line_7"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break  </p>
+              <p id="line_8"> &nbsp;&nbsp;&nbsp;&nbsp;end</p>
+              <p id="line_9">end</p>
+              <p id="line_10">puts circumference</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <pre><%=@Commentary1%></pre>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script>
+var $deferredAnim = $.Deferred( function( deferredAnim ){
+
+  //thenでファンクション名を繋げる
+  deferredAnim.then(anim_01)
+  .then(anim_02)
+  .then(anim_03)
+  .then(anim_04)
+  .then(anim_05)
+  .then(anim_06)
+
+});
+
+//実行
+$deferredAnim.resolve();
+
+function anim_01 (){
+  return $("#line_5").delay(1000).animate({
+    "background-color": "#87CEEB"
+  },1000),$("#ten").delay(1000).animate({
+    "background-color": "#87CEEB"
+  },1000),$("#five").delay(1000).animate({
+    "background-color": "#87CEEB"
+  },1000),$("#four").delay(1000).animate({
+    "background-color": "#87CEEB"
+  },1000)
+}
+function anim_02 (){
+  return $("#line_5").delay(1000).animate({
+    "background-color": "#778899"
+  },1000),$("#line_8").delay(1000).animate({
+    "background-color": "#87CEEB"
+  },1000)
+
+}
+function anim_03 (){
+   return $("#line_8").delay(1000).animate({
+    "background-color": "#778899"
+  },1000),$("#ten").delay(1000).animate({
+    "background-color": "#87CEEB"
+  },1000)
+}
+function anim_04 (){
+  return $("#line_5").delay(1000).animate({
+    "background-color": "#87CEEB"
+  },1000),$("#ten").delay(1000).animate({
+    "background-color": "#ddd"
+  },1000),$("#three").delay(1000).animate({
+    "background-color": "#87CEEB"
+  },1000)
+
+}
+function anim_05 (){
+  return $("#line_5").delay(1000).animate({
+    "background-color": "#778899"
+  },1000),$("#line_6").delay(1000).animate({
+    "background-color": "#87CEEB"
+  },1000),$("#circumference").delay(1000).animate({
+    "background-color": "#87CEEB"
+  },1000),$("#line_7").delay(1000).animate({
+    "background-color": "#87CEEB"
+  },1000)
+}
+function anim_06 (){
+  $("#circumference").text("12 circumference");
+  return $("#line_6").delay(1000).animate({
+    "background-color": "#778899"
+  },1000),$("#line_7").delay(1000).animate({
+    "background-color": "#778899"
+  },1000),$("#line_10").delay(1000).animate({
+    "background-color": "#87CEEB"
+  },1000)
+}
+
+
+</script>
