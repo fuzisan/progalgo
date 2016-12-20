@@ -10,5 +10,43 @@
 
   <body>
     <%= yield %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
+    <script>
+      var editor = ace.edit("editor0");
+      var editor1 = ace.edit("editor1");
+      var editor2 = ace.edit("editor2");
+      editor.$blockScrolling = Infinity;
+      editor.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: true
+      });
+      /*for文で回したい*/
+      editor.setTheme("ace/theme/monokai");
+      editor.getSession().setMode("ace/mode/ruby");
+      editor1.setTheme("ace/theme/monokai");
+      editor1.getSession().setMode("ace/mode/ruby");
+      editor2.setTheme("ace/theme/monokai");
+      editor2.getSession().setMode("ace/mode/ruby");
+    </script>
+
+    <script>
+    (function($){
+
+    $(document).ready(function(){
+      var tablist = $("#tab_head li");
+      var tabbody = $("#tab_body li");
+
+      tablist.click(function(){
+        var idx = tablist.index($(this));
+        tablist.removeClass("on").eq(idx).addClass("on");
+        tabbody.removeClass("on").eq(idx).addClass("on");
+      });
+
+    });
+    })(jQuery);
+
+    </script>
   </body>
 </html>
