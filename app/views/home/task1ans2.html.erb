@@ -100,6 +100,7 @@ crossorigin="anonymous"></script>
   </div>
 </div>
 <script>
+function main() {
 var $deferredAnim = $.Deferred( function( deferredAnim ){
 
   //thenでファンクション名を繋げる
@@ -109,69 +110,91 @@ var $deferredAnim = $.Deferred( function( deferredAnim ){
   .then(anim_04)
   .then(anim_05)
   .then(anim_06)
-
+  .then(anim_07)
+  .then(anim_08)
+  .done( main )
 });
 
 //実行
 $deferredAnim.resolve();
 
 function anim_01 (){
-  return $("#line_5").delay(1000).animate({
+  return $("#line_5").delay(500).animate({
     "background-color": "#87CEEB"
-  },1000),$("#ten").delay(1000).animate({
+  },1000),$("#ten").delay(500).animate({
     "background-color": "#87CEEB"
-  },1000),$("#five").delay(1000).animate({
+  },1000),$("#five").delay(500).animate({
     "background-color": "#87CEEB"
-  },1000),$("#four").delay(1000).animate({
+  },1000),$("#four").delay(500).animate({
     "background-color": "#87CEEB"
   },1000)
 }
 function anim_02 (){
-  return $("#line_5").delay(1000).animate({
+  return $("#line_5").delay(500).animate({
     "background-color": "#778899"
-  },1000),$("#line_8").delay(1000).animate({
+  },1000),$("#line_8").delay(500).animate({
     "background-color": "#87CEEB"
   },1000)
 
 }
 function anim_03 (){
-   return $("#line_8").delay(1000).animate({
+   return $("#line_8").delay(500).animate({
     "background-color": "#778899"
-  },1000),$("#ten").delay(1000).animate({
+  },1000),$("#ten").delay(500).animate({
     "background-color": "#87CEEB"
   },1000)
 }
 function anim_04 (){
-  return $("#line_5").delay(1000).animate({
+  return $("#line_5").delay(500).animate({
     "background-color": "#87CEEB"
-  },1000),$("#ten").delay(1000).animate({
+  },1000),$("#ten").delay(500).animate({
     "background-color": "#ddd"
-  },1000),$("#three").delay(1000).animate({
+  },1000),$("#three").delay(500).animate({
     "background-color": "#87CEEB"
   },1000)
 
 }
 function anim_05 (){
-  return $("#line_5").delay(1000).animate({
+  return $("#line_5").delay(500).animate({
     "background-color": "#778899"
-  },1000),$("#line_6").delay(1000).animate({
+  },1000),$("#line_6").delay(500).animate({
     "background-color": "#87CEEB"
-  },1000),$("#circumference").delay(1000).animate({
+  },1000),$("#circumference").delay(500).animate({
     "background-color": "#87CEEB"
-  },1000),$("#line_7").delay(1000).animate({
+  },1000),$("#line_7").delay(500).animate({
     "background-color": "#87CEEB"
   },1000)
 }
 function anim_06 (){
   $("#circumference").text("12 circumference");
-  return $("#line_6").delay(1000).animate({
+  return $("#line_6").delay(500).animate({
     "background-color": "#778899"
-  },1000),$("#line_7").delay(1000).animate({
+  },1000),$("#line_7").delay(500).animate({
     "background-color": "#778899"
-  },1000),$("#line_10").delay(1000).animate({
+  },1000),$("#line_10").delay(500).animate({
     "background-color": "#87CEEB"
   },1000)
 }
 
+function anim_07(){
+return $("#line_10").delay(500).animate({
+  "background-color": "#778899"
+},1000),$("#five").delay(500).animate({
+  "background-color": "#ddd"
+},1000),$("#four").delay(500).animate({
+  "background-color": "#ddd"
+},1000),$("#three").delay(500).animate({
+  "background-color": "#ddd"
+},1000),$("#circumference").delay(500).animate({
+  "background-color": "#ddd"
+},1000)
 
+}
+function anim_08(){
+$("#circumference").text("0 circumference");
+
+}
+
+}
+main()
 </script>
