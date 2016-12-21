@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'home/top'
+  root 'home#top'
   get 'task1/task'
   get 'task1/task1ans'
   get 'task1/task1ans2'
