@@ -1,16 +1,16 @@
-class Task1Controller < ApplicationController
-
+class TaskController < ApplicationController
   def task
   end
+
 def task1ans
   #ファイル参照にしたい
   @ans0 = <<EOD
-len = [2,3,4,5,10]
-n = len.length
-ans = 0
-#全ての数字の選び方を試す
-#重複して選ばないようi<j<kとする
-for i in 0..n do
+  len = [2,3,4,5,10]
+  n = len.length
+  ans = 0
+  #全ての数字の選び方を試す
+  #重複して選ばないようi<j<kとする
+  for i in 0..n do
   for j in i+1..n do
     for k in j+1..n do
       element =[len[i],len[j],len[k]].map(&:to_i)
@@ -21,34 +21,33 @@ for i in 0..n do
       ans = circumference if max < rest
     end
   end
-end
-puts ans
+  end
+  puts ans
 EOD
 
-@Commentary0= <<EOD
+  @Commentary0= <<EOD
   全ての選び方を試して最も長いものを出力する.
 EOD
 end
 
 def task1ans2
-
-@ans1 = <<EOD
-len = [2,3,4,5,10]
-circumference = 0
-#降順にソート
-element = len.sort {|a, b| b.to_i <=> a.to_i }
-#3本ずつ使う
-for i in 0..element.length-2 do
+  @ans1 = <<EOD
+  len = [2,3,4,5,10]
+  circumference = 0
+  #降順にソート
+  element = len.sort {|a, b| b.to_i <=> a.to_i }
+  #3本ずつ使う
+  for i in 0..element.length-2 do
     if element[i].to_i < element[i+1].to_i + element[i+2].to_i
       circumference = element[i] + element[i+1] + element[i+2]
       break  #長いものから順にやってるためcircumferenceが更新された段階で抜ける
     end
-end
+  end
 
-puts circumference
+  puts circumference
 
 EOD
-@Commentary1= <<EOD
+  @Commentary1= <<EOD
   周長が最も長い三角形は，なるべく長い棒たちを使った三角形である．
   なので，配列を降順にソートし長い棒から順に3本使っていく．
   一番長い棒a[1],次に長い棒a[2],その次に長い棒a[3]とする．
@@ -57,26 +56,26 @@ EOD
   a[2]を一番長い棒として同様に進めていく．
 EOD
 
-end
+  end
 
 def task1ans3
-@ans2 = <<EOD
-len=[2,3,4,5,10]
-ans = 0
-#降順にソート
-element = len.sort {|a, b| b.to_i <=> a.to_i }
-#3本ずつ使う
-for i in 0..element.length-3 do
+  @ans2 = <<EOD
+  len=[2,3,4,5,10]
+  ans = 0
+  #降順にソート
+  element = len.sort {|a, b| b.to_i <=> a.to_i }
+  #3本ずつ使う
+  for i in 0..element.length-3 do
   circumference = element[i] + element[i+1] + element[i+2]
   #辺をすべて足した長さが最長の辺の長さの２倍を超えている
   if circumference > element[i] * 2
       ans = circumference
       break
   end
-end
+  end
 EOD
 
-@Commentary2= <<EOD
+  @Commentary2= <<EOD
   三角形の成立条件の見方を変える.
   三角形が成立するとき,
   一番長い棒a[1],次に長い棒a[2],その次に長い棒a[3]，三角形の周長をCとする．
@@ -96,4 +95,25 @@ EOD
   これをコードに起こす
 EOD
 end
+
+  def task2ans
+@ans0=<<EOD
+  for i in 1..100 do
+      ans = ""
+      if i%15 == 0
+          ans = "FizzBuzz"
+      elsif i%3 == 0
+          ans = "Fizz"
+      else i%5==0
+          ans == "Buzz"
+      end
+      puts "#¥{i}:#¥{ans}"
+  end
+EOD
+
+  @Commentary0 = <<EOD
+
+
+EOD
+  end
 end
