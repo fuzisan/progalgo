@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'puzzle/home'
+
   root 'home#top'
   get 'task1/task'
   get 'task1/task1ans'
