@@ -1,25 +1,3 @@
-<style>
-#character {
-  height:100px;
-  margin:20px;
-  background-color:#FF9966;
-  border:1px solid #cc3333;
-}
-#dropbox {
-  height:100px;
-  margin:20px;
-  background-color:#CCFF66;
-  border:1px solid #00cc00;
-  /*webkit系ブラウザでドラッグ＆ドロップを動かす*/
-  -khtml-user-drag: element;
-}
-
-.commentary img{
-  width: 50%;    /* 横幅を割合で指定 */
-  height: auto;
-}
-</style>
-
 <h2>課題　オオカミ，ヤギ，キャベツを川の向こう岸に運びましょう</h2>
 <div class="row">
   <div class="col-xs-6">
@@ -42,87 +20,59 @@
     </div>
   </div>
 </div>
-
-<h2>解説</h2>
-<div class="container">
-	<div class="row">
-		<div class="col-md-6">
+      <h2>解説</h2>
+      <h3>この問題のポイント</h3>
       <pre>
-      (狼，山羊，キャベツ)の時
+        状態を可視化すること
+
+      </pre>
+      <h3>ゴールの状態を管理する</h3>
+      <pre>
+      この課題のゴールは，オオカミ，山羊，キャベツを全て向こう岸に渡すこと
       こちら側にある状態を0
       向こう側にある状態を1
       とする．
-      この課題は(0,0,0)を(1,1,1)にすることである．
-      各状態を図形に起こすと下記のようになる．
-      避ける状態は
-      山羊が食べられる状態
-      (0,0,0)->(0,0,1)　山羊が食べられる
-      (1,1,0)->(1,1,0)　山羊が食べられる
+      (狼，山羊，キャベツ)という座標で見るとき
+      この課題のゴールは(0,0,0)を(1,1,1)にすることである．
+      <p class="commentary"><img alt="" src="/assets/fgc0.png" /></p>
+    </pre>
+      <h3>問題文から避けるべき状態を可視化する</h3>
+      <h4>山羊が食べられる状態</h4>
+      <pre>
+      (0,0,0)->(0,0,1)　
+      (1,1,0)->(1,1,1)　
+    </pre>
+      <h4>キャベツが食べられる状態</h4>
+      <pre>
+      (0,0,0)->(1,0,0)
+      (0,1,1)->(1,1,1)
+      これらのルートにバツをつける
+      <p class="commentary"><img alt="" src="/assets/fgc1.png" /></p>
+    </pre>
 
-      キャベツが食べられる状態
-      (0,0,0)->(1,0,0)　キャベツが食べられる
-      (0,1,1)->(1,1,1)　キャベツが食べられる
-      このルートにバツをつける
+      <h3>移動できる状態を可視化する．</h3>
+      <pre>
       移動できるルートを太い線にする．
       この太い線上のみを通り，(0,0,0)から(1,1,1)に移動する
-      つまり，正解は
-      (0,0,0)->(0,1,0)->(0,1,1)->(0,0,1)->(1,0,1)->(1,1,1)
-      または
-      (0,0,0)->(0,1,0)->(1,1,0)->(1,0,0)->(1,0,1)->(1,1,1)
-      である．
-
-      日本語に起こすと，
-
-      この課題から，状態を可視化することの重要性をを学んだ
-
-    </pre>
-		</div>
-		<div class="col-md-6">
-			<p class="commentary"><img alt="" src="/assets/fgc0.png" /></p>
-      <p class="commentary"><img alt="" src="/assets/fgc1.png" /></p>
       <p class="commentary"><img alt="" src="/assets/fgc2.png" /></p>
-		</div>
-	</div>
-  <div class="row">
-		<div class="col-md-6">
+    </pre>
+      <h3>これらから正解のルートを導く</h3>
+      <pre>
+      正解は
+      (0,0,0)->(0,1,0)->(0,1,1)->
+      (0,0,1)->(1,0,1)->(1,1,1)
+      または
+      (0,0,0)->(0,1,0)->(1,1,0)->
+      (1,0,0)->(1,0,1)->(1,1,1)
+      である．
+    </pre>
 
-		</div>
-		<div class="col-md-6">
-
-		</div>
-	</div>
-  <div class="row">
-		<div class="col-md-6">
-
-		</div>
-		<div class="col-md-6">
-
-		</div>
-	</div>
-</div>
-<script>
-/*参考引用元http://www.htmq.com/dnd/*/
-/***** ドラッグ開始時の処理 *****/
-function f_dragstart(event){
-  //ドラッグするデータのid名をDataTransferオブジェクトにセット
-  event.dataTransfer.setData("text", event.target.id);
-}
-
-/***** ドラッグ要素がドロップ要素に重なっている間の処理 *****/
-function f_dragover(event){
-  //dragoverイベントをキャンセルして、ドロップ先の要素がドロップを受け付けるようにする
-  event.preventDefault();
-}
-
-/***** ドロップ時の処理 *****/
-function f_drop(event){
-  //ドラッグされたデータのid名をDataTransferオブジェクトから取得
-  var id_name = event.dataTransfer.getData("text");
-  //id名からドラッグされた要素を取得
-  var drag_elm =document.getElementById(id_name);
-  //ドロップ先にドラッグされた要素を追加
-  event.currentTarget.appendChild(drag_elm);
-  //エラー回避のため、ドロップ処理の最後にdropイベントをキャンセルしておく
-  event.preventDefault();
-}
-</script>
+      <h3>日本語に起こす</h3>
+      <pre>
+      手順は下記のようになる．
+      山羊を向こう岸へ
+      キャベツを向こう岸へ
+      山羊をこちら側へ
+      狐を向こう側へ
+      山羊を向こう側へ
+    </pre>

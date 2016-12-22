@@ -1,3 +1,22 @@
 // Place all the styles related to the puzzle controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#character {
+  height:100px;
+  margin:20px;
+  background-color:#FF9966;
+  border:1px solid #cc3333;
+}
+#dropbox {
+  height:100px;
+  margin:20px;
+  background-color:#CCFF66;
+  border:1px solid #00cc00;
+  /*webkit系ブラウザでドラッグ＆ドロップを動かす*/
+  -khtml-user-drag: element;
+}
+
+.commentary img{
+  width: 50%;    /* 横幅を割合で指定 */
+  height: auto;
+}
