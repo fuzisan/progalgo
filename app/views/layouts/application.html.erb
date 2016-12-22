@@ -9,10 +9,19 @@
   </head>
 
   <body>
+    <header class="navbar">
+<div class="header-body">
+  <div id="logo">plogalgo</div>
+  <ul class="header-right">
+    <li>task</li>
+    <li>puzzle</li>
+  </ul>
+</div>
+</header>
     <div class="container">
     	<div class="row">
     		<div class="col-md-1"></div>
-        <div class="col-md-10"><%= yield %></div>
+        <div class="col-md-10 main-contents"><%= yield %></div>
         <div class="col-md-1"></div>
       </div>
     </div>
