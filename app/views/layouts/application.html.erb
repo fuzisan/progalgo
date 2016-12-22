@@ -9,7 +9,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-1"></div>
+        <div class="col-md-10"><%= yield %></div>
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
     <script>
