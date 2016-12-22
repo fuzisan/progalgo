@@ -1,0 +1,89 @@
+<style>
+#character {
+  width:500px;
+  height:100px;
+  margin:20px;
+  background-color:#FF9966;
+  border:1px solid #cc3333;
+}
+#dropbox {
+  width:500px;
+  height:100px;
+  margin:20px;
+  background-color:#CCFF66;
+  border:1px solid #00cc00;
+  /*webkit系ブラウザでドラッグ＆ドロップを動かす*/
+  -khtml-user-drag: element;
+}
+</style>
+
+<h2>課題　オオカミ，ヤギ，キャベツを川の向こう岸に運びましょう</h2>
+<div class="row">
+  <div class="col-xs-6">
+    <pre>
+      オオカミとヤギを連れキャベツを持った農夫が川岸にいる。
+      川にはボートがあるが農夫の他には動物一頭かキャベツ一個しか乗せられない。
+      農夫がいなければオオカミはヤギを襲うし、ヤギはキャベツを食べてしまう。
+      すべてを無事に対岸に渡すにはどうしたらよいか?
+    </pre>
+  </div>
+  <div class="col-xs-6">
+    <p>川の向こう側</p>
+    <div id="dropbox" ondragover="f_dragover(event)" ondrop="f_drop(event)"></div>
+
+    <p>こちらがわ</p>
+    <div id="character" ondragover="f_dragover(event)" ondrop="f_drop(event)">
+    <img src="images/apple.gif" id="apple" alt="オオカミ" draggable="true" ondragstart="f_dragstart(event)">
+    <img src="images/orange.gif" id="orange" alt="ヤギ" draggable="true" ondragstart="f_dragstart(event)">
+    <img src="images/grape.gif" id="grape" alt="キャベツ" draggable="true" ondragstart="f_dragstart(event)">
+    </div>
+  </div>
+</div>
+
+<h2>解説</h2>
+<pre>
+(狼，山羊，キャベツ)の時
+こちら側にある状態を0
+向こう側にある状態を1
+とする．
+この課題は(0,0,0)を(1,1,1)にすることである．
+避ける状態は
+(0,0,0)->(0,0,1)　山羊が食べられる
+(0,0,0)->(1,0,0)　キャベツが食べられる
+(0,1,1)->(1,1,1)　キャベツが食べられる
+(1,1,0)->(1,1,0)　山羊が食べられる
+この状態を避けつつ1つずつ移動させると
+(0,0,0)->(0,1,0)->(0,1,1)->(0,0,1)->(1,0,1)->(1,1,1)
+または
+(0,0,0)->(0,1,0)->(1,1,0)->(1,0,0)->(1,0,1)->(1,1,1)
+である．
+
+この課題から，状態を可視化することの重要性をを学んだ
+
+引用元https://en.wikipedia.org/wiki/Fox,_goose_and_bag_of_beans_puzzle
+</pre>
+<script>
+/***** ドラッグ開始時の処理 *****/
+function f_dragstart(event){
+  //ドラッグするデータのid名をDataTransferオブジェクトにセット
+  event.dataTransfer.setData("text", event.target.id);
+}
+
+/***** ドラッグ要素がドロップ要素に重なっている間の処理 *****/
+function f_dragover(event){
+  //dragoverイベントをキャンセルして、ドロップ先の要素がドロップを受け付けるようにする
+  event.preventDefault();
+}
+
+/***** ドロップ時の処理 *****/
+function f_drop(event){
+  //ドラッグされたデータのid名をDataTransferオブジェクトから取得
+  var id_name = event.dataTransfer.getData("text");
+  //id名からドラッグされた要素を取得
+  var drag_elm =document.getElementById(id_name);
+  //ドロップ先にドラッグされた要素を追加
+  event.currentTarget.appendChild(drag_elm);
+  //エラー回避のため、ドロップ処理の最後にdropイベントをキャンセルしておく
+  event.preventDefault();
+}
+</script>
