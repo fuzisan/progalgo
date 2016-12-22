@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Progalgo</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Progalgo</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <header class="navbar">
-<div class="header-body">
-  <div id="logo">plogalgo</div>
-  <ul class="header-right">
-    <li>task</li>
-    <li>puzzle</li>
-  </ul>
-</div>
-</header>
-    <div class="container">
-    	<div class="row">
-    		<div class="col-md-1"></div>
-        <div class="col-md-10 main-contents"><%= yield %></div>
-        <div class="col-md-1"></div>
-      </div>
+<body>
+  <header class="navbar">
+    <div class="header-body">
+      <div id="logo">plogalgo</div>
+      <ul class="header-right">
+        <li>task</li>
+        <li>puzzle</li>
+      </ul>
     </div>
+  </header>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
-    <script>
-      var editor = ace.edit("editor");
-      editor.$blockScrolling = Infinity;
-      editor.setOptions({
-        enableBasicAutocompletion: true,
-        enableSnippets: true,
-        enableLiveAutocompletion: true
-      });
-      /*for文で回したい*/
-      editor.setTheme("ace/theme/monokai");
-      editor.getSession().setMode("ace/mode/ruby");
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10 main-contents"><%= yield %></div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
 
-    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
+  <script>
+  var editor = ace.edit("editor");
+  editor.$blockScrolling = Infinity;
+  editor.setOptions({
+    enableBasicAutocompletion: true,
+    enableSnippets: true,
+    enableLiveAutocompletion: true
+  });
+  editor.setTheme("ace/theme/monokai");
+  editor.getSession().setMode("ace/mode/ruby");
+  </script>
 
-  </body>
+</body>
 </html>
