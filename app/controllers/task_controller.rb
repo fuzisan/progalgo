@@ -11,16 +11,18 @@ def task1ans
   #全ての数字の選び方を試す
   #重複して選ばないようi<j<kとする
   for i in 0..n do
-  for j in i+1..n do
-    for k in j+1..n do
-      element =[len[i],len[j],len[k]].map(&:to_i)
-      #最も長い棒の長さ＜他の2本の棒の長さ
-      circumference = element.inject(:+)
-      max = element.max
-      rest = circumference - max
-      ans = circumference if max < rest
+    for j in i+1..n do
+      for k in j+1..n do
+        element =[len[i],len[j],len[k]].map(&:to_i)
+        #最も長い棒の長さ＜他の2本の棒の長さ
+        circumference = element.inject(:+)
+        max = element.max
+        rest = circumference - max
+        if max < rest
+           ans = ans > circumference ? ans : circumference
+       end
+      end
     end
-  end
   end
   puts ans
 EOD
