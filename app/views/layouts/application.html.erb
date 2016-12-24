@@ -26,7 +26,7 @@
       <div class="col-md-1"></div>
     </div>
   </div>
-
+  <!--/*　ace editor読み込み　*/-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
   <script>
@@ -40,6 +40,78 @@
   });
   editor.setTheme("ace/theme/monokai");
   editor.getSession().setMode("ace/mode/ruby");
+  </script>
+  <!--/*　ace editorをスクロールと一緒に動かす　*/-->
+  <script>
+  var initPosition = $(".code").offset().top;
+  $(window).scroll(function() {
+    var scroll = $(document).scrollTop();
+
+    // 移動後ポジション
+    var movePosition = initPosition + scroll - 150 + "px";
+    $(".code").animate({
+      top : movePosition
+    }, {
+      duration : 0,
+      queue : false
+    });
+
+  });
+  </script>
+  <!--/*　jQuery Validation.js読み込み gem jQuery validation engineが動かなかったため*/-->
+  <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+  <script>
+
+  $.validator.addMethod("valueNotEquals", function(value, element, arg){
+    return arg != value;
+  }, "Value must not equal arg.");
+
+  $("#form").validate({
+    rules: {
+      q1: { valueNotEquals: "false" },
+      q2: { valueNotEquals: "false" },
+      q3: { valueNotEquals: "false" },
+      q4: { valueNotEquals: "false" },
+      q5: { valueNotEquals: "false" },
+      q6: { valueNotEquals: "false" },
+      q7: { valueNotEquals: "false" },
+      q8: { valueNotEquals: "false" },
+      q9: { valueNotEquals: "false" },
+      q10: { valueNotEquals: "false" },
+      q11: { valueNotEquals: "false" },
+      q12: { valueNotEquals: "false" },
+      q13: { valueNotEquals: "false" },
+      q14: { valueNotEquals: "false" },
+      q15: { valueNotEquals: "false" },
+      q16: { valueNotEquals: "false" },
+      q17: { valueNotEquals: "false" },
+      q18: { valueNotEquals: "false" },
+      q19: { valueNotEquals: "false" }
+
+    },
+    messages: {
+      q1: { valueNotEquals: "間違ってますー！" },
+      q2: { valueNotEquals: "間違ってますー！" },
+      q3: { valueNotEquals: "間違ってますー！" },
+      q4: { valueNotEquals: "間違ってますー！" },
+      q5: { valueNotEquals: "間違ってますー！" },
+      q6: { valueNotEquals: "間違ってますー！" },
+      q7: { valueNotEquals: "間違ってますー！" },
+      q8: { valueNotEquals: "間違ってますー！" },
+      q9: { valueNotEquals: "間違ってますー！" },
+      q10: { valueNotEquals: "間違ってますー！" },
+      q11: { valueNotEquals: "間違ってますー！" },
+      q12: { valueNotEquals: "間違ってますー！" },
+      q13: { valueNotEquals: "間違ってますー！" },
+      q14: { valueNotEquals: "間違ってますー！" },
+      q15: { valueNotEquals: "間違ってますー！" },
+      q16: { valueNotEquals: "間違ってますー！" },
+      q17: { valueNotEquals: "間違ってますー！" },
+      q18: { valueNotEquals: "間違ってますー！" },
+      q19: { valueNotEquals: "間違ってますー！" }
+    }
+  });
+
   </script>
 
 </body>

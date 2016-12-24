@@ -80,3 +80,8 @@ h3 {
    float: left;
    color: white;
  }
+
+label.error{
+  background-color: red;
+  color: white;
+}
