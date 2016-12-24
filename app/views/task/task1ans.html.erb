@@ -1,21 +1,22 @@
-<h2>解答</h2>
+<h2 id="-">プログラムを読む</h2>
 <h3>考え方1</h3>
 <div class="row">
   <div class="col-xs-6">
-    <pre id="editor" style="height: 600px"><%=@ans0%></pre>
+    <pre class="code" id="editor" style="height: 600px"><%=@ans0%></pre>
   </div>
   <div class="col-xs-6">
     <div class="tab">
       <ul id="tab_head">
-        <li class="on">動画</li>
-        <li>解説</li>
+        <li>動画</li>
+        <li class="on">解説</li>
       </ul>
       <ul id="tab_body">
-        <li class="on">
-          <p>hogehoge</p>
-        </li>
         <li>
-          <pre><%=@Commentary0%></pre>
+          <p>準備中</p>
+        </li>
+        <li class="on">
+          <p><%= link_to "プログラムの読み方", way_of_thinking_path %></p>
+          <%= @Commentary0.html_safe %>
         </li>
       </ul>
     </div>

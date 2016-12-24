@@ -4,31 +4,154 @@ class TaskController < ApplicationController
 
 def task1ans
   #ファイル参照にしたい
-  @ans0 = <<EOD
-  len = [2,3,4,5,10]
-  n = len.length
-  ans = 0
-  #全ての数字の選び方を試す
-  #重複して選ばないようi<j<kとする
-  for i in 0..n do
-    for j in i+1..n do
-      for k in j+1..n do
-        element =[len[i],len[j],len[k]].map(&:to_i)
-        #最も長い棒の長さ＜他の2本の棒の長さ
-        circumference = element.inject(:+)
-        max = element.max
-        rest = circumference - max
-        if max < rest
-           ans = ans > circumference ? ans : circumference
-       end
+@ans0 = <<EOD
+len = [2,3,4,5,10]
+ans = 0
+
+for i in 0..len.length do
+  for j in i+1..len.length do
+    for k in j+1..len.length do
+      element =[len[i],len[j],len[k]].map(&:to_i)
+      circumference = element.inject(:+)
+      max = element.max
+      rest = circumference - max
+      if max < rest
+          ans = ans > circumference ? ans : circumference
       end
     end
   end
-  puts ans
+end
+
+puts ans
 EOD
 
-  @Commentary0= <<EOD
-  全ての選び方を試して最も長いものを出力する.
+@Commentary0= <<EOD
+<form action="javascript:hoge()" method="post" id="form">
+  <h3>for文のブロック変数の役割を読む</h3>
+  <p>3つとも
+    <select name="q1" required>
+      <option value=""></option>
+      <option value="true">配列のindex番号に使われている</option>
+      <option value="false">何にも使われていない</option>
+    </select></p>
+    <h3>各ブロック変数の関係を読む</h3>
+    <p>iは<select name="q2" required>
+      <option value=""></option>
+      <option value="true">0</option>
+      <option value="false">1</option>
+      <option value="false">2</option>
+    </select>
+    から
+    <select name="q3" required>
+      <option value=""></option>
+      <option value="false">10</option>
+      <option value="true">len.length</option>
+      <option value="false">100</option>
+    </select>まで</p>
+    <p>jは<select name="q4" required>
+      <option value=""></option>
+      <option value="false">i</option>
+      <option value="true">i+1</option>
+      <option value="false">i+2</option>
+    </select>
+    から
+    <select name="q5" required>
+      <option value=""></option>
+      <option value="false">10</option>
+      <option value="true">len.length</option>
+      <option value="false">100</option>
+    </select>まで</p>
+    <p>kは<select name="q6" required>
+      <option value=""></option>
+      <option value="false">i</option>
+      <option value="true">j+1</option>
+      <option value="false">2</option>
+    </select>
+    から
+    <select name="q7" required>
+      <option value=""></option>
+      <option value="false">10</option>
+      <option value="true">len.length</option>
+      <option value="false">100</option>
+    </select>まで回っている．</p>
+
+    <pつまり ブロック変数同士の関係は</p>
+    <p> <select name="q8" required>
+      <option value=""></option>
+      <option value="true">i&#x3C;j&#x3C;k</option>
+      <option value="false">i&le;k&#x3C;j</option>
+      <option value="false">i&le;j&le;k</option>
+    </select></p>
+    <h3>for文は何をしているのか</h3>
+    <p>ブロック変数の役割は<select name="q9" required>
+      <option value=""></option>
+      <option value="true">配列のindex番号</option>
+      <option value="false">何にも使われていない</option>
+    </select></p>
+    <p>ブロック変数i,j,kは<select name="q10" required>
+      <option value=""></option>
+      <option value="true">重複しない値になっている．</option>
+      <option value="false">重複を許した値になっている．</option>
+    </select></p>
+    <p> これらから，このfor文は</p>
+    <p> 配列から<select name="q11" required>
+      <option value=""></option>
+      <option value="true">重複しないように</option>
+      <option value="false">重複を許して</option>
+    </select><select name="q12" required>
+      <option value=""></option>
+      <option value="false">1</option>
+      <option value="false">2</option>
+      <option value="true">3</option>
+    </select>つの数字の選んでいることがわかる</p>
+    <h3>繰り返されている処理を読む</h3>
+    <p>変数circumferenceに選ばれた数字の<select name="q13" required>
+      <option value=""></option>
+      <option value="false">最大値</option>
+      <option value="true">合計値</option>
+      <option value="false">変数circumferenceと変数maxの差分</option>
+    </select>が入っている</p>
+    <p>  変数maxに選ばれた数字の<select name="q14" required>
+      <option value=""></option>
+      <option value="true">最大値</option>
+      <option value="false">合計値</option>
+      <option value="false">変数circumferenceと変数maxの差分</option>
+    </select>が入っている</p>
+    <p>  変数restに<select name="q15" required>
+      <option value=""></option>
+      <option value="false">最大値</option>
+      <option value="false">合計値</option>
+      <option value="true">変数circumferenceと変数maxの差分</option>
+    </select>が入っている</p>
+    <h3>if文の条件とされている式を読む</h3>
+    <p>このif文の条件は，変数maxが変数restよりも<select name="q16" required>
+      <option value=""></option>
+      <option value="true">小さい</option>
+      <option value="false">大きい</option>
+    </select>とき</p>
+    <h3>if文の中身を読む</h3>
+    <p>変数ansが，現在の値よりも変数cicumferenceが大きいときは現在値のまま，小さいときは変数circumferenceを代入している．</p>
+    <h3>つまりこのプログラムは</h3>
+    <p>配列から重複を<select name="q17" required>
+      <option value=""></option>
+      <option value="false">許して</option>
+      <option value="true">許さず</option>
+    </select>3つの数字を選び出し</p>
+    <p>数字の
+      <select name="q18" required>
+        <option value=""></option>
+        <option value="true">最大値が残りの合計値よりも小さい</option>
+        <option value="false">合計値がもっとも大きい</option>
+      </select>とき</p>
+
+      <p>その中で合計値の<select name="q19" required>
+        <option value=""></option>
+        <option value="true">最大値</option>
+        <option value="false">最小値</option>
+      </select>を出力している</p>
+
+      <input type="submit" value="チェック">
+    </form>
 EOD
 end
 
