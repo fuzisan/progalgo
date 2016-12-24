@@ -15,6 +15,8 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+
 /*参考引用元http://www.htmq.com/dnd/*/
 /***** ドラッグ開始時の処理 *****/
 function f_dragstart(event){
