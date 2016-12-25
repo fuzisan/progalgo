@@ -75,7 +75,7 @@ EOD
       <option value="false">100</option>
     </select>まで回っている．</p>
 
-    <pつまり ブロック変数同士の関係は</p>
+    <p>つまり ブロック変数同士の関係は</p>
     <p> <select name="q8" required>
       <option value=""></option>
       <option value="true">i&#x3C;j&#x3C;k</option>
