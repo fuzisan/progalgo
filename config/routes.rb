@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'puzzle/home'
 
   root 'home#top'
+  get 'ruby_gatebook' =>'home#ruby_gatebook'
   get 'way_of_thinking' => 'home#way_of_thinking'
   get 'task/task'
   get 'task/task1ans'
