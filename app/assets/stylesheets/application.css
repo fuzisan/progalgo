@@ -111,6 +111,7 @@ label.error{
   flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-end;
+  /*visibility: hidden;*/
 }
 .arr_elm{
   list-style-type: none;
@@ -119,6 +120,7 @@ label.error{
   width:50px;
   height: 50px;
   text-align: center;
+  color: white;
 }
 .wrapper{
   width: 1200px;
@@ -129,17 +131,43 @@ label.error{
   background-color: #87CEEB;
 }
 #circumference{
-  width:130px;
+  width: 130px;
 }
+.blockvariable{
+  width:130px;
+  display: flex;
+}
+.vari{
+  margin: 3px;
+  background: #ddd;
+  text-align: center;
+  padding: 5px;
+}
+#i{
+  background-color:red;
+ }
+#j{
+  background-color:blue;
+}
+#k{
+  background:green;
+ }
+
 #ten{
-  height: 500px;
+  height: 250px;
 }
 #five{
-  height:250px;
+  height:125px;
 }
-#four{height: 200px;}
-#three{height: 150px;}
-#two{height:100px;}
+#four{
+  height: 100px;
+}
+#three{
+  height: 75px;
+}
+#two{
+  height:50px;
+}
 .code{
   /*float: right;*/
   font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
