@@ -44,6 +44,7 @@ function f_drop(event){
 }
 
 /*task　解説，動画タブ*/
+function tab(){
 (function($){
 
   $(document).ready(function(){
@@ -58,7 +59,7 @@ function f_drop(event){
 
   });
 })(jQuery);
-
+}
 /*task1ans1の解説アニメーション*/
 function task1ans1movie() {
   var $deferredAnim = $.Deferred( function( deferredAnim ){
