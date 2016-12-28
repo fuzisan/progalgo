@@ -419,3 +419,20 @@ $(window).scroll(function() {
 
 });
 }
+
+<!--/*　paiza editorをスクロールと一緒に動かす　*/-->
+function paizaeditorscroll(){
+var initPosition = $(".code").offset().top;
+$(window).scroll(function() {
+  var scroll = $(document).scrollTop();
+  // 移動後ポジション
+  var movePosition = initPosition + scroll - 120+ "px";
+  $(".code").animate({
+    top : movePosition
+  }, {
+    duration : 0,
+    queue : false
+  });
+
+});
+}
