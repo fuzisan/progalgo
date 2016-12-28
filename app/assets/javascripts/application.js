@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require twitter/bootstrap
 //= require turbolinks
 //= require ace-rails-ap
@@ -452,4 +454,69 @@ editor.setOptions({
 */
 editor.setTheme("ace/theme/monokai");
 editor.getSession().setMode("ace/mode/ruby");
+}
+
+
+function formvalidate(){
+  $.validator.addMethod("valueNotEquals", function(value, element, arg){
+    return arg != value;
+  }, "Value must not equal arg.");
+
+  $("#form").validate({
+    rules: {
+      q1: { valueNotEquals: "false" },
+      q2: { valueNotEquals: "false" },
+      q3: { valueNotEquals: "false" },
+      q4: { valueNotEquals: "false" },
+      q5: { valueNotEquals: "false" },
+      q6: { valueNotEquals: "false" },
+      q7: { valueNotEquals: "false" },
+      q8: { valueNotEquals: "false" },
+      q9: { valueNotEquals: "false" },
+      q10: { valueNotEquals: "false" },
+      q11: { valueNotEquals: "false" },
+      q12: { valueNotEquals: "false" },
+      q13: { valueNotEquals: "false" },
+      q14: { valueNotEquals: "false" },
+      q15: { valueNotEquals: "false" },
+      q16: { valueNotEquals: "false" },
+      q17: { valueNotEquals: "false" },
+      q18: { valueNotEquals: "false" },
+      q19: { valueNotEquals: "false" }
+
+    },
+    messages: {
+      q1: { valueNotEquals: "wrong answer" },
+      q2: { valueNotEquals: "wrong answer" },
+      q3: { valueNotEquals: "wrong answer" },
+      q4: { valueNotEquals: "wrong answer" },
+      q5: { valueNotEquals: "wrong answer" },
+      q6: { valueNotEquals: "wrong answer" },
+      q7: { valueNotEquals: "wrong answer" },
+      q8: { valueNotEquals: "wrong answer" },
+      q9: { valueNotEquals: "wrong answer" },
+      q10: { valueNotEquals: "wrong answer" },
+      q11: { valueNotEquals: "wrong answer" },
+      q12: { valueNotEquals: "wrong answer" },
+      q13: { valueNotEquals: "wrong answer" },
+      q14: { valueNotEquals: "wrong answer" },
+      q15: { valueNotEquals: "wrong answer" },
+      q16: { valueNotEquals: "wrong answer" },
+      q17: { valueNotEquals: "wrong answer" },
+      q18: { valueNotEquals: "wrong answer" },
+      q19: { valueNotEquals: "wrong answer" }
+    }
+  });
+
+  function hoge(){
+    $('.link').append($("<a></a>",
+    {href: "/task/task",
+    "class": "showlink",
+    text: "次に進む"}
+  ));
+
+  $('.link').addClass("onn");
+
+}
+
 }
