@@ -14,7 +14,7 @@
       <div id="logo">plogalgo</div>
       <ul class="header-right">
         <li><%= link_to "ruby文法", ruby_gatebook_path %></li>
-        <li>task</li>
+        <li><%= link_to "task", task_index_path %></li>
         <li>puzzle</li>
       </ul>
     </div>
@@ -32,22 +32,6 @@
   src="https://code.jquery.com/color/jquery.color-2.1.2.js"
   integrity="sha256-1Cn7TdfHiMcEbTuku97ZRSGt2b3SvZftEIn68UMgHC8="
   crossorigin="anonymous"></script>
-  <!--/*　ace editor読み込み　*/-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
-  <script>
-  var editor = ace.edit("editor");
-  document.getElementById('editor').style.fontSize='14px';
-  editor.$blockScrolling = Infinity;
-  editor.setOptions({
-    enableBasicAutocompletion: true,
-    enableSnippets: true,
-    enableLiveAutocompletion: true
-  });
-  editor.setTheme("ace/theme/monokai");
-  editor.getSession().setMode("ace/mode/ruby");
-  </script>
-
   <!--/*　jQuery Validation.js読み込み gem jQuery validation engineが動かなかったため*/-->
   <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
   <script>

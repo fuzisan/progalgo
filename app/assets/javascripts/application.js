@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
+//= require ace-rails-ap
 //= require_tree .
 
 /*puzzle用*/
@@ -435,4 +436,17 @@ $(window).scroll(function() {
   });
 
 });
+}
+
+function aceeditor(){
+var editor = ace.edit("editor");
+document.getElementById('editor').style.fontSize='14px';
+editor.$blockScrolling = Infinity;
+editor.setOptions({
+  enableBasicAutocompletion: true,
+  enableSnippets: true,
+  enableLiveAutocompletion: true
+});
+editor.setTheme("ace/theme/monokai");
+editor.getSession().setMode("ace/mode/ruby");
 }
