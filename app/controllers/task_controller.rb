@@ -1,5 +1,12 @@
 class TaskController < ApplicationController
   def task
+    @task = <<EOD
+棒の長さが記録された配列 len = [2,3,4,5,10]があります．
+配列から棒を3本選び，できるだけ周長の長い三角形を作ろうと考えています．
+できた三角形のうちの最大の周長を出力するプログラムを作成してください．
+ただし，三角形が作れない際には0と出力してください．
+EOD
+
   end
 
 def task1ans
