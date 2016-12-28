@@ -507,16 +507,14 @@ function formvalidate(){
       q19: { valueNotEquals: "wrong answer" }
     }
   });
-
-  function hoge(){
-    $('.link').append($("<a></a>",
-    {href: "/task/task",
-    "class": "showlink",
-    text: "次に進む"}
-  ));
-
-  $('.link').addClass("onn");
-
 }
 
+function showlink(){
+  $('.link').append($("<a></a>",
+  {href: "/task/task",
+  "class": "showlink",
+  text: "次に進む"}
+));
+
+$('.link').addClass("onn");
 }

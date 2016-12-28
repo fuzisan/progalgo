@@ -33,7 +33,7 @@ puts circumference
 EOD
 
 @Commentary0= <<EOD
-<form action="javascript:hoge()" method="post" id="form">
+<form action="javascript:showlink()" method="post" id="form">
   <h3>for文のブロック変数の役割を読む</h3>
   <p>3つとも
     <select name="q1" required>
