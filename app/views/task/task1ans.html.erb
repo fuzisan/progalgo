@@ -2,7 +2,19 @@
 <h3>考え方1</h3>
 <div class="row">
   <div class="col-xs-6">
-    <pre class="code" id="editor" style="height: 600px"><%=@ans0%></pre>
+    <select id="language">
+      <option value="ruby">Ruby</option>
+      <option value="python">Python</option>
+      <option value="c">C</option>
+    </select>
+    <div class="code">
+      <pre id="editor" style="height: 380px"><%=@ans0%></pre>
+      <button id="run_button" class="btn btn-primary">実行</button>
+      <p>出力</p>
+      <pre><div id="stdout"></div></pre>
+      <p>エラー出力</p>
+      <pre><div id="stderr"></div></pre>
+    </div>
   </div>
   <div class="col-xs-6">
     <div class="tab">
