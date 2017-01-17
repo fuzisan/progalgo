@@ -413,7 +413,7 @@ $(window).scroll(function() {
   var scroll = $(document).scrollTop();
 
   // 移動後ポジション
-  var movePosition = initPosition + scroll - 90 + "px";
+  var movePosition = initPosition + scroll - 150 + "px";
   $(".code").animate({
     top : movePosition
   }, {

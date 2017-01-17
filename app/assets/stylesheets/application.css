@@ -176,5 +176,6 @@ label.error{
   background-color: #778899;
   color: #fff;
   position: absolute;
-  right: 0;
+  left: 0;
+  width: 100%;
 }
