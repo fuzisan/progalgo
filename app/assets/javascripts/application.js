@@ -441,22 +441,6 @@ $(window).scroll(function() {
 });
 }
 
-function aceeditor(){
-var editor = ace.edit("editor");
-document.getElementById('editor').style.fontSize='14px';
-editor.$blockScrolling = Infinity;
-/*
-editor.setOptions({
-  enableBasicAutocompletion: true,
-  enableSnippets: true,
-  enableLiveAutocompletion: true
-});
-*/
-editor.setTheme("ace/theme/monokai");
-editor.getSession().setMode("ace/mode/ruby");
-}
-
-
 function formvalidate(){
   $.validator.addMethod("valueNotEquals", function(value, element, arg){
     return arg != value;
@@ -517,4 +501,89 @@ function showlink(){
 ));
 
 $('.link').addClass("onn");
+}
+
+function aceeditor(){
+  var aceEditor = ace.edit("editor");
+  document.getElementById('editor').style.fontSize='14px';
+  editor.$blockScrolling = Infinity;
+  /*
+  editor.setOptions({
+    enableBasicAutocompletion: true,
+    enableSnippets: true,
+    enableLiveAutocompletion: true
+  });
+  */
+  aceEditor.setTheme("ace/theme/monokai");
+
+  $("#run_button").on("click",function(event){
+    runCode();
+  });
+  aceEditor.commands.addCommand({
+    bindKey:{win: "Ctrl-Enter",mac:"Ctrl-Enter"},
+    exec:runCode,
+  })
+
+  function setEditorLanguage(language){
+    var languageToMode={
+      ruby:"ruby",
+      python: "python",
+      c:"c_cpp",
+    };
+    var mode = languageToMode[language];
+    aceEditor.getSession().setMode("ace/mode/"+mode);
+  }
+  $("#language").val("ruby");
+  setEditorLanguage("ruby");
+  $("#language").on("change",function(event){
+    setEditorLanguage(this.value);
+  });
+
+  function runCode(){
+  $("#run_button").text("実行中").prop("disabled",true);
+
+    var language = $("#language").val();
+    var source_code = aceEditor.getValue();
+    var input = $("#input").val();
+    $.ajax({
+      url: "http://api.paiza.io/runners/create",
+      method:"POST",
+      data:{
+        language:language,
+        source_code:source_code,
+        input:input,
+        longpoll:false,
+        api_key: 'guest',
+      },
+    }).done(function(result){
+      var sessionId = result.id;
+      var retryCount = 0;
+      var getResult = function(){
+        console.log("getResult");
+        $.ajax({
+          url: "http://api.paiza.io/runners/get_details?api_key=guest&id="+sessionId,
+          method:"GET",
+        }).done(function(result){
+          if(result.status == "running" && retryCount++<10){
+            setTimeout(getResult,1000);
+            return;
+          }
+          console.log("result;",result);
+          $("#stdout").text(result.stdout);
+          $("#stderr").text(result.stderr);
+          $("#time").text(result.time);
+          $("exit_code").text(result.exit_code);
+          $("#run_button").text("実行(Ctrl-Enter)").prop("disabled",false);
+        }).fail(function(error){
+          alert("rewuest failed:" + error);
+          $("#run_button").text("実行(Ctrl-Enter)").prop("disabled",false);
+        });
+      };
+      getResult();
+    }).fail(function(error){
+      alert("rewuest failed:" + error);
+      $("#run_button").text("実行(Ctrl-Enter)").prop("disabled",false);
+    });
+
+  }
 }
