@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @reading.title %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @reading.code %>
+</p>
+
+<p>
+  <strong>Animation:</strong>
+  <%= @reading.animation %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @reading.question %>
+</p>
+
+<%= link_to 'Edit', edit_reading_path(@reading) %> |
+<%= link_to 'Back', readings_path %>

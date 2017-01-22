@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :readings
   get 'puzzle/home'
 
   root 'home#top'
