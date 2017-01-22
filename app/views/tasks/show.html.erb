@@ -4,11 +4,24 @@
   <strong>Title:</strong>
   <%= @task.title %>
 </p>
-
+<h2>課題  下記の条件を満たすプログラムを作成してください．</h2>
 <p>
   <strong>Question:</strong>
-  <%= @task.question %>
+  <%= @task.question.html_safe %>
 </p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<select id="language">
+  <option value="ruby">Ruby</option>
+  <option value="python">Python</option>
+  <option value="c">C</option>
+</select>
+<pre id="editor" style="height: 600px"></pre>
+<p>入力</p>
+<textarea id="input"></textarea>
+<button id="run_button" class="btn btn-primary">実行</button>
+<p>出力</p>
+<pre><div id="stdout"></div></pre>
+<p>エラー出力</p>
+<pre><div id="stderr"></div></pre>
+<script>
+aceeditor()
+</script>
