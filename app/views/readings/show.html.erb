@@ -1,24 +1,44 @@
-<p id="notice"><%= notice %></p>
+<h2 id="-">プログラムを読む</h2>
+<h3><%= @reading.title %></h3>
+<div class="row">
+  <div class="col-xs-6">
+    <select id="language">
+      <option value="ruby">Ruby</option>
+      <option value="python">Python</option>
+      <option value="c">C</option>
+    </select>
+    <div class="code">
+      <pre id="editor" style="height: 380px"><%= @reading.code %></pre>
+      <button id="run_button" class="btn btn-primary">実行</button>
+      <p>出力</p>
+      <pre><div id="stdout"></div></pre>
+      <p>エラー出力</p>
+      <pre><div id="stderr"></div></pre>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div class="tab">
+      <ul id="tab_head">
+        <li>動画</li>
+        <li class="on">解説</li>
+      </ul>
+      <ul id="tab_body">
+        <li>
+          <%= @reading.animation.html_safe %>
+        </li>
+        <li class="on">
+          <%= @reading.question.html_safe %>
+        </li>
+      </ul>
+      <div class ="link"></div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @reading.title %>
-</p>
-
-<p>
-  <strong>Code:</strong>
-  <%= @reading.code %>
-</p>
-
-<p>
-  <strong>Animation:</strong>
-  <%= @reading.animation %>
-</p>
-
-<p>
-  <strong>Question:</strong>
-  <%= @reading.question %>
-</p>
-
-<%= link_to 'Edit', edit_reading_path(@reading) %> |
-<%= link_to 'Back', readings_path %>
+<script>
+tab()
+task1ans1movie()
+aceeditor()
+aceeditorscroll()
+formvalidate()
+</script>
