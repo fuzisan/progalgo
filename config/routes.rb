@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :readings
+  #resources :readings
+  get '/readings/new' => "readings#new"
+  post '/readings' => "readings#create"
+  get '/readings' => "readings#index"
+  get '/readings/:id' => "readings#show", as: 'reading'
+  patch  '/readings/:id' =>"readings#update", as: 'update_reading'
+  get  '/readings/:id/edit' =>"readings#edit", as: 'edit_reading'
+  delete '/readings/:id' => 'readings#destroy', as: 'destroy_reading'
+
   get 'puzzle/home'
 
   root 'home#top'
